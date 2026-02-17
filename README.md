@@ -35,7 +35,7 @@ _sql_constraints = [
 
 **Restricción:** Un profesor no puede impartir clase en dos grupos diferentes que coincidan en el mismo tramo horario.
 
-*   **Implementación:** (Python Constraint)
+*   **Implementación:** [.py](cci:7://file:///c:/odoo-dev/odoo/modelos/gestion_academica/__init__.py:0:0-0:0) (Python Constraint)
 *   **Modelo:** `grupo.clase`
 *   **Método:** `@api.constrains('profesor_id', 'horario')`
 *   **Lógica:** Antes de asignar un grupo a un profesor, el sistema realiza una búsqueda (search) en todos los grupos existentes para verificar si ese profesor (profesor_id) ya tiene asignada una clase en el mismo horario (horario), excluyendo el registro actual. Si se encuentra coincidencia, se bloquea la operación.
