@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de Lista para Factura Académica -->
+        <record id="factura_academica_list" model="ir.ui.view">
+            <field name="name">factura.academica.list</field>
+            <field name="model">factura.academica</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="alumno_id"/>
+                    <field name="cantidad"/>
+                    <field name="fecha_pago"/>
+                    <field name="concepto"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vista de Formulario para Factura Académica -->
+        <record id="factura_academica_form" model="ir.ui.view">
+            <field name="name">factura.academica.form</field>
+            <field name="model">factura.academica</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="alumno_id"/>
+                            <field name="cantidad"/>
+                            <field name="fecha_pago"/>
+                        </group>
+                        <group>
+                            <field name="concepto"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

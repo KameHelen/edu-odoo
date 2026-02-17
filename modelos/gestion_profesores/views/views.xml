@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Acciones (deben definirse antes de que los menús las referencien) -->
+        <record id="action_profesor_academico" model="ir.actions.act_window">
+            <field name="name">Profesores Académicos</field>
+            <field name="res_model">profesor.academico</field>
+            <field name="view_mode">kanban,list,form</field>
+        </record>
+
+        <record id="action_grupo_clase" model="ir.actions.act_window">
+            <field name="name">Grupos de Clase</field>
+            <field name="res_model">grupo.clase</field>
+            <field name="view_mode">kanban,list,form</field>
+        </record>
+
+        <!-- Submenú para Profesores -->
+        <menuitem id="gestion_profesores.menu_profesor_academico" 
+                  name="Profesores" 
+                  parent="gestion_academica.menu_gestion_academica" 
+                  action="gestion_profesores.action_profesor_academico"
+                  sequence="7"/>
+
+        <!-- Submenú para Grupos de Clase -->
+        <menuitem id="gestion_profesores.menu_grupo_clase" 
+                  name="Grupos de Clase" 
+                  parent="gestion_academica.menu_gestion_academica" 
+                  action="gestion_profesores.action_grupo_clase"
+                  sequence="8"/>
+    </data>
+</odoo>

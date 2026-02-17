@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_profesor_academico,profesor_academico,model_profesor_academico,,1,1,1,1
+access_grupo_clase,grupo_clase,model_grupo_clase,,1,1,1,1

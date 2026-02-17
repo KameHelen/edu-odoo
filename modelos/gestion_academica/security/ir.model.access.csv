@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_curso_academico,curso_academico,model_curso_academico,,1,1,1,1
+access_sesion_academica,sesion_academica,model_sesion_academica,,1,1,1,1
+

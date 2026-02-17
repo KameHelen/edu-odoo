@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extensión para la Vista de Formulario de Sesión Académica para añadir Grupos de Clase -->
+        <record id="sesion_academica_form_inherit_profesores" model="ir.ui.view">
+            <field name="name">sesion.academica.form.inherit.profesores</field>
+            <field name="model">sesion.academica</field>
+            <field name="inherit_id" ref="gestion_academica.sesion_academica_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[field[@name='numero_asientos']]" position="after">
+                    <separator string="Grupos de Clase"/>
+                    <field name="grupo_clase_ids"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

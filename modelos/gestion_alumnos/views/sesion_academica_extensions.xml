@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extensión para la Vista de Formulario de Sesión Académica para añadir Matrículas -->
+        <record id="sesion_academica_form_inherit_alumnos" model="ir.ui.view">
+            <field name="name">sesion.academica.form.inherit.alumnos</field>
+            <field name="model">sesion.academica</field>
+            <field name="inherit_id" ref="gestion_academica.sesion_academica_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[field[@name='numero_asientos']]" position="after">
+                    <group>
+                        <field name="numero_alumnos" readonly="1"/>
+                        <field name="matricula_ids"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

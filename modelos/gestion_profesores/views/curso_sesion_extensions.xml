@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extension for Curso Académico - Add Profesores field -->
+        <record id="curso_academico_form_inherit" model="ir.ui.view">
+            <field name="name">curso.academico.form.inherit</field>
+            <field name="model">curso.academico</field>
+            <field name="inherit_id" ref="gestion_academica.curso_academico_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sesion_ids']" position="before">
+                    <separator string="Profesores"/>
+                    <field name="profesor_ids"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Extension for Sesión Académica - Add Grupos de Clase field -->
+        <record id="sesion_academica_form_inherit" model="ir.ui.view">
+            <field name="name">sesion.academica.form.inherit</field>
+            <field name="model">sesion.academica</field>
+            <field name="inherit_id" ref="gestion_academica.sesion_academica_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='matricula_ids']" position="before">
+                    <separator string="Grupos de Clase"/>
+                    <field name="grupo_clase_ids"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

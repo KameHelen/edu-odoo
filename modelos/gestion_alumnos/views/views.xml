@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Acciones (deben definirse antes de que los menús las referencien) -->
+        <record id="action_alumno_academico" model="ir.actions.act_window">
+            <field name="name">Alumnos Académicos</field>
+            <field name="res_model">alumno.academico</field>
+            <field name="view_mode">kanban,list,form</field>
+        </record>
+
+        <record id="action_sesion_alumno" model="ir.actions.act_window">
+            <field name="name">Matrículas</field>
+            <field name="res_model">sesion.alumno</field>
+            <field name="view_mode">kanban,list,form</field>
+        </record>
+
+        <record id="action_factura_academica" model="ir.actions.act_window">
+            <field name="name">Facturas</field>
+            <field name="res_model">factura.academica</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <!-- Submenú para Alumnos -->
+        <menuitem id="gestion_alumnos.menu_alumno_academico" 
+                  name="Alumnos" 
+                  parent="gestion_academica.menu_gestion_academica" 
+                  action="gestion_alumnos.action_alumno_academico"
+                  sequence="4"/>
+
+        <!-- Submenú para Matrículas -->
+        <menuitem id="gestion_alumnos.menu_sesion_alumno" 
+                  name="Matrículas" 
+                  parent="gestion_academica.menu_gestion_academica" 
+                  action="gestion_alumnos.action_sesion_alumno"
+                  sequence="5"/>
+
+        <!-- Submenú para Facturas -->
+        <menuitem id="gestion_alumnos.menu_factura_academica" 
+                  name="Facturas" 
+                  parent="gestion_academica.menu_gestion_academica" 
+                  action="gestion_alumnos.action_factura_academica"
+                  sequence="6"/>
+    </data>
+</odoo>

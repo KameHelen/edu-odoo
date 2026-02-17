@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de Lista para Sesión Alumno (Matrículas) -->
+        <record id="sesion_alumno_list" model="ir.ui.view">
+            <field name="name">sesion.alumno.list</field>
+            <field name="model">sesion.alumno</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="sesion_id"/>
+                    <field name="alumno_id"/>
+                    <field name="estado"/>
+                    <field name="fecha_inscripcion"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vista de Formulario para Sesión Alumno (Matrículas) -->
+        <record id="sesion_alumno_form" model="ir.ui.view">
+            <field name="name">sesion.alumno.form</field>
+            <field name="model">sesion.alumno</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="sesion_id"/>
+                            <field name="alumno_id"/>
+                            <field name="estado"/>
+                            <field name="fecha_inscripcion"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Vista Kanban para Sesión Alumno -->
+        <record id="sesion_alumno_kanban" model="ir.ui.view">
+            <field name="name">sesion.alumno.kanban</field>
+            <field name="model">sesion.alumno</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="estado" class="o_kanban_small_column">
+                    <field name="sesion_id"/>
+                    <field name="alumno_id"/>
+                    <field name="estado"/>
+                    <field name="fecha_inscripcion"/>
+                    <templates>
+                        <t t-name="card">
+                            <div class="o_kanban_record_top">
+                                <strong class="o_kanban_record_title">
+                                    <field name="alumno_id"/>
+                                </strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div>Sesión: <field name="sesion_id"/></div>
+                                <div class="text-muted small">
+                                    Inscripción: <field name="fecha_inscripcion"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Acciones (deben definirse antes de que los menús las referencien) -->
+        <record id="action_curso_academico" model="ir.actions.act_window">
+            <field name="name">Cursos Académicos</field>
+            <field name="res_model">curso.academico</field>
+            <field name="view_mode">kanban,list,form,calendar</field>
+        </record>
+
+        <record id="action_sesion_academica" model="ir.actions.act_window">
+            <field name="name">Sesiones Académicas</field>
+            <field name="res_model">sesion.academica</field>
+            <field name="view_mode">kanban,list,form,calendar</field>
+        </record>
+
+        <!-- Menú Principal -->
+        <menuitem id="gestion_academica.menu_gestion_academica" 
+                  name="Gestión Académica" 
+                  sequence="1"/>
+
+        <!-- Submenú para Cursos -->
+        <menuitem id="gestion_academica.menu_curso_academico" 
+                  name="Cursos" 
+                  parent="gestion_academica.menu_gestion_academica" 
+                  action="gestion_academica.action_curso_academico"
+                  sequence="1"/>
+
+        <!-- Submenú para Sesiones -->
+        <menuitem id="gestion_academica.menu_sesion_academica" 
+                  name="Sesiones" 
+                  parent="gestion_academica.menu_gestion_academica" 
+                  action="gestion_academica.action_sesion_academica"
+                  sequence="2"/>
+    </data>
+</odoo>

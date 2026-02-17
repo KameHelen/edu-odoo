@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Vista de Lista para Sesión Académica -->
+        <record id="sesion_academica_list" model="ir.ui.view">
+            <field name="name">sesion.academica.list</field>
+            <field name="model">sesion.academica</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="curso_id"/>
+                    <field name="fecha_inicio"/>
+                    <field name="duracion"/>
+                    <field name="numero_asientos"/>
+                    <field name="numero_alumnos"/>
+                    <field name="porcentaje_ocupacion" widget="progressbar" 
+                        decoration-success="porcentaje_ocupacion &lt; 50" 
+                        decoration-warning="porcentaje_ocupacion &gt;= 50 and porcentaje_ocupacion &lt; 100" 
+                        decoration-danger="porcentaje_ocupacion == 100"/>
+                    <field name="estado_ocupacion"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Vista de Formulario para Sesión Académica -->
+        <record id="sesion_academica_form" model="ir.ui.view">
+            <field name="name">sesion.academica.form</field>
+            <field name="model">sesion.academica</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="curso_id"/>
+                            <field name="fecha_inicio"/>
+                            <field name="duracion"/>
+                            <field name="numero_asientos"/>
+                        </group>
+                        <group>
+                            <field name="numero_alumnos"/>
+                            <field name="porcentaje_ocupacion" widget="progressbar"/>
+                            <field name="estado_ocupacion"/>
+                            <field name="color_ocupacion"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vista Calendario para Sesión Académica -->
+        <record id="sesion_academica_calendar" model="ir.ui.view">
+            <field name="name">sesion.academica.calendar</field>
+            <field name="model">sesion.academica</field>
+            <field name="arch" type="xml">
+                <calendar string="Sesiones Académicas" date_start="fecha_inicio" color="estado_ocupacion">
+                    <field name="curso_id"/>
+                    <field name="numero_alumnos"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Vista Kanban para Sesión Académica -->
+        <record id="sesion_academica_kanban" model="ir.ui.view">
+            <field name="name">sesion.academica.kanban</field>
+            <field name="model">sesion.academica</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_small_column" default_group_by="estado_ocupacion">
+                    <field name="curso_id"/>
+                    <field name="fecha_inicio"/>
+                    <field name="duracion"/>
+                    <field name="numero_alumnos"/>
+                    <field name="numero_asientos"/>
+                    <field name="porcentaje_ocupacion"/>
+                    <field name="estado_ocupacion"/>
+                    <field name="color_ocupacion"/>
+                    <templates>
+                        <t t-name="card">
+                            <div t-attf-class="oe_kanban_global_click oe_kanban_color_#{record.color_ocupacion.raw_value}">
+                                <div class="o_kanban_record_top">
+                                <strong class="o_kanban_record_title">
+                                    <field name="curso_id"/>
+                                </strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div>
+                                    <i class="fa fa-clock-o"/> <field name="fecha_inicio"/>
+                                </div>
+                                <div>
+                                    Duración: <field name="duracion"/> min
+                                </div>
+                                <div class="mt-2 d-flex align-items-center">
+                                    <div class="progress flex-grow-1" style="height: 10px; background-color: #e9ecef; border-radius: 0.25rem; margin-right: 5px;">
+                                        <div role="progressbar" 
+                                             t-attf-class="progress-bar #{record.porcentaje_ocupacion.raw_value &gt;= 100 ? 'bg-danger' : (record.porcentaje_ocupacion.raw_value &gt;= 50 ? 'bg-warning' : 'bg-success')}" 
+                                             t-att-style="'width: ' + record.porcentaje_ocupacion.raw_value + '%; transition: width 0.6s ease;'" 
+                                             t-att-aria-valuenow="record.porcentaje_ocupacion.raw_value" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                    <b><t t-esc="Math.round(record.porcentaje_ocupacion.raw_value)"/>%</b>
+                                </div>
+                                <div class="text-muted small mt-1">
+                                    <field name="numero_alumnos"/> / <field name="numero_asientos"/> alumnos
+                                </div>
+                            </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>

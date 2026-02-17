@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Alumnos -->
+        <record id="alumno_carlos" model="alumno.academico">
+            <field name="nombre">Carlos</field>
+            <field name="apellidos">Ruiz</field>
+            <field name="email">carlos.ruiz@example.com</field>
+        </record>
+
+        <record id="alumno_maria" model="alumno.academico">
+            <field name="nombre">Maria</field>
+            <field name="apellidos">Lopez</field>
+            <field name="email">maria.lopez@example.com</field>
+        </record>
+        
+        <record id="alumno_pedro" model="alumno.academico">
+            <field name="nombre">Pedro</field>
+            <field name="apellidos">Sanchez</field>
+            <field name="email">pedro.sanchez@example.com</field>
+        </record>
+
+        <record id="alumno_laura" model="alumno.academico">
+            <field name="nombre">Laura</field>
+            <field name="apellidos">Diaz</field>
+            <field name="email">laura.diaz@example.com</field>
+        </record>
+
+        <!-- Matrículas -->
+        <record id="matricula_carlos_python" model="sesion.alumno">
+            <field name="alumno_id" ref="alumno_carlos"/>
+            <field name="sesion_id" ref="gestion_academica.sesion_python_1"/>
+            <field name="estado">confirmada</field>
+        </record>
+
+        <record id="matricula_maria_python" model="sesion.alumno">
+            <field name="alumno_id" ref="alumno_maria"/>
+            <field name="sesion_id" ref="gestion_academica.sesion_python_1"/>
+            <field name="estado">pagada</field>
+        </record>
+
+        <record id="matricula_pedro_odoo" model="sesion.alumno">
+            <field name="alumno_id" ref="alumno_pedro"/>
+            <field name="sesion_id" ref="gestion_academica.sesion_odoo_1"/>
+            <field name="estado">pagada</field>
+        </record>
+
+        <record id="matricula_laura_odoo" model="sesion.alumno">
+            <field name="alumno_id" ref="alumno_laura"/>
+            <field name="sesion_id" ref="gestion_academica.sesion_odoo_2"/>
+            <field name="estado">borrador</field>
+        </record>
+        
+        <!-- Actualización de Contadores de Sesión mediante Update Records -->
+        <record id="gestion_academica.sesion_python_1" model="sesion.academica">
+            <field name="numero_alumnos">2</field>
+        </record>
+        
+        <record id="gestion_academica.sesion_odoo_1" model="sesion.academica">
+            <field name="numero_alumnos">1</field>
+        </record>
+
+        <record id="gestion_academica.sesion_odoo_2" model="sesion.academica">
+            <field name="numero_alumnos">1</field>
+        </record>
+
+    </data>
+</odoo>

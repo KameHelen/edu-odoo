@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Profesores -->
+        <record id="profesor_juan" model="profesor.academico">
+            <field name="nombre">Juan Pérez</field>
+            <field name="titulacion">Ingeniero Informático</field>
+            <field name="curso_ids" eval="[(6, 0, [ref('gestion_academica.curso_python')])]"/>
+        </record>
+
+        <record id="profesor_ana" model="profesor.academico">
+            <field name="nombre">Ana García</field>
+            <field name="titulacion">Máster en Gestión Empresarial</field>
+            <field name="curso_ids" eval="[(6, 0, [ref('gestion_academica.curso_odoo')])]"/>
+        </record>
+
+        <!-- Grupos de Clase -->
+        <record id="grupo_python_1" model="grupo.clase">
+            <field name="nombre">Grupo A - Python</field>
+            <field name="horario">10:00</field>
+            <field name="profesor_id" ref="profesor_juan"/>
+            <field name="sesion_id" ref="gestion_academica.sesion_python_1"/>
+        </record>
+        
+        <record id="grupo_odoo_1" model="grupo.clase">
+            <field name="nombre">Grupo B - Odoo</field>
+            <field name="horario">09:00</field>
+            <field name="profesor_id" ref="profesor_ana"/>
+            <field name="sesion_id" ref="gestion_academica.sesion_odoo_1"/>
+        </record>
+    </data>
+</odoo>

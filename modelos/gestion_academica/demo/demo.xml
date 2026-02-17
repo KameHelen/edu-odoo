@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Cursos -->
+        <record id="curso_python" model="curso.academico">
+            <field name="titulo">Curso de Python Avanzado</field>
+            <field name="descripcion">Aprende Python desde cero hasta nivel experto, incluyendo frameworks web y análisis de datos.</field>
+            <field name="nivel">b2</field>
+            <field name="precio">150.0</field>
+        </record>
+
+        <record id="curso_odoo" model="curso.academico">
+            <field name="titulo">Curso de Odoo Funcional</field>
+            <field name="descripcion">Gestión empresarial con Odoo 19: Ventas, Compras, Inventario y Contabilidad.</field>
+            <field name="nivel">c1</field>
+            <field name="precio">200.0</field>
+        </record>
+
+        <!-- Sesiones -->
+        <record id="sesion_python_1" model="sesion.academica">
+            <field name="curso_id" ref="curso_python"/>
+            <field name="fecha_inicio" eval="(DateTime.now() + relativedelta(days=1)).strftime('%Y-%m-%d 10:00:00')"/>
+            <field name="duracion">120</field>
+            <field name="numero_asientos">20</field>
+            <field name="numero_alumnos">0</field>
+        </record>
+
+        <record id="sesion_python_2" model="sesion.academica">
+            <field name="curso_id" ref="curso_python"/>
+            <field name="fecha_inicio" eval="(DateTime.now() + relativedelta(days=3)).strftime('%Y-%m-%d 16:00:00')"/>
+            <field name="duracion">120</field>
+            <field name="numero_asientos">20</field>
+            <field name="numero_alumnos">0</field>
+        </record>
+
+        <record id="sesion_odoo_1" model="sesion.academica">
+            <field name="curso_id" ref="curso_odoo"/>
+            <field name="fecha_inicio" eval="(DateTime.now() + relativedelta(days=2)).strftime('%Y-%m-%d 09:00:00')"/>
+            <field name="duracion">180</field>
+            <field name="numero_asientos">15</field>
+            <field name="numero_alumnos">0</field>
+        </record>
+
+        <record id="sesion_odoo_2" model="sesion.academica">
+            <field name="curso_id" ref="curso_odoo"/>
+            <field name="fecha_inicio" eval="(DateTime.now() + relativedelta(days=5)).strftime('%Y-%m-%d 11:00:00')"/>
+            <field name="duracion">180</field>
+            <field name="numero_asientos">15</field>
+            <field name="numero_alumnos">0</field>
+        </record>
+    </data>
+</odoo>
